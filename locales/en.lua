@@ -1,4 +1,4 @@
-Locales['fr'] = {
+Locales['en'] = {
   -- Cloakroom
   ['cloakroom'] = 'Cloakroom',
   ['citizen_wear'] = 'Citizen Clothes',
@@ -28,7 +28,7 @@ Locales['fr'] = {
   ['put_in_vehicle'] = 'Put in vehicle',
   ['out_the_vehicle'] = 'Put out of vehicle',
   ['fine'] = 'Fine',
-  ['no_players_nearby'] = 'no players nearby'
+  ['no_players_nearby'] = 'no players nearby',
 
   ['vehicle_info'] = 'Vehicle info',
   ['pick_lock'] = 'Lock pick',

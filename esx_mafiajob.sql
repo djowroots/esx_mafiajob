@@ -11,13 +11,13 @@ INSERT INTO `addon_inventory` (name, label, shared) VALUES
 ;
 
 INSERT INTO `jobs` (`name`, `label`, `whitelisted`) VALUES
-('mafia', '💸 Bratva Nostra', 1);
+('mafia', '💸 Mafia', 1);
 
 
 INSERT INTO `job_grades` (`job_name`, `grade`, `name`, `label`, `salary`, `skin_male`, `skin_female`) VALUES
-('mafia', 0, 'soldato', 'Recrue', 0, '{}', '{}'),
-('mafia', 2, 'mafioso', 'Mafioso', 0, '{}', '{}'),
-('mafia', 3, 'capo', 'Capo', 0, '{}', '{}'),
+('mafia', 0, 'soldato', 'Recruit', 0, '{}', '{}'),
+('mafia', 2, 'mafioso', 'Mafia', 0, '{}', '{}'),
+('mafia', 3, 'capo', 'Captain', 0, '{}', '{}'),
 ('mafia', 4, 'assassin', 'Assassin', 0, '{}', '{}'),
-('mafia', 5, 'consigliere', 'Consigliere', 0, '{}', '{}'),
-('mafia', 6, 'boss', 'Le Parrain', 0, '{}', '{}');
+('mafia', 5, 'consigliere', 'Councilor', 0, '{}', '{}'),
+('mafia', 6, 'boss', 'The Godfather', 0, '{}', '{}');
