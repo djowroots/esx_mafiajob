@@ -41,7 +41,7 @@ Config.MafiaStations = {
 		  { name = 'sandking',   label = 'Sandking 4X4' },
 		  { name = 'mule3',      label = 'Transport truck' },
 		  { name = 'guardian',   label = 'Guardian 4x4' },
-		  { name = 'burrito3',   label = 'burrito3' },
+		  { name = 'rumpo3',     label = 'Rumpo' },
 		  { name = 'mesa',       label = 'mesa' },
 	  },
 
