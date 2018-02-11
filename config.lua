@@ -51,6 +51,7 @@ Config.MafiaStations = {
 
     Armories = {
       { x = 1.550, y = 527.397, z = 169.617 },
+	  { x = -807.72, y = 167.32, z = 76 },
     },
 
     Vehicles = {
