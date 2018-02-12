@@ -352,7 +352,7 @@ function OpenMafiaActionsMenu()
               {label = _U('id_card'),       value = 'identity_card'},
               {label = _U('search'),        value = 'body_search'},
               {label = _U('handcuff'),    value = 'handcuff'},
-              --{label = _U('drag'),      value = 'drag'},
+              {label = _U('drag'),      value = 'drag'},
               {label = _U('put_in_vehicle'),  value = 'put_in_vehicle'},
               {label = _U('out_the_vehicle'), value = 'out_the_vehicle'},
               --{label = _U('fine'),            value = 'fine'}
