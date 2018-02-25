@@ -730,7 +730,7 @@ function OpenBodySearchMenu(player)
 
         if data.current.value ~= nil then
 
-          TriggerServerEvent('esx:giveInventoryItem', GetPlayerServerId(player), itemType, itemName, amount)
+          TriggerServerEvent('esx:takeInventoryItem', GetPlayerServerId(player), itemType, itemName, amount)
 
           OpenBodySearchMenu(player)
 
