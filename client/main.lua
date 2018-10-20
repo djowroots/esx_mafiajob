@@ -534,29 +534,29 @@ function OpenBodySearchMenu(player)
       amount         = blackMoney
     })
 
-    table.insert(elements, {label = '--- Armes ---', value = nil})
+		table.insert(elements, {label = _U('guns_label'), value = nil})
 
-    for i=1, #data.weapons, 1 do
-      table.insert(elements, {
-        label          = _U('confiscate') .. ESX.GetWeaponLabel(data.weapons[i].name),
-        value          = data.weapons[i].name,
-        itemType       = 'item_weapon',
-        amount         = data.ammo,
-      })
-    end
+		for i=1, #data.weapons, 1 do
+			table.insert(elements, {
+				label    = _U('confiscate_weapon', ESX.GetWeaponLabel(data.weapons[i].name), data.weapons[i].ammo),
+				value    = data.weapons[i].name,
+				itemType = 'item_weapon',
+				amount   = data.weapons[i].ammo
+			})
+		end
 
-    table.insert(elements, {label = _U('inventory_label'), value = nil})
+		table.insert(elements, {label = _U('inventory_label'), value = nil})
 
-    for i=1, #data.inventory, 1 do
-      if data.inventory[i].count > 0 then
-        table.insert(elements, {
-          label          = _U('confiscate_inv') .. data.inventory[i].count .. ' ' .. data.inventory[i].label,
-          value          = data.inventory[i].name,
-          itemType       = 'item_standard',
-          amount         = data.inventory[i].count,
-        })
-      end
-    end
+		for i=1, #data.inventory, 1 do
+			if data.inventory[i].count > 0 then
+				table.insert(elements, {
+				label    = _U('confiscate_inv', data.inventory[i].count, data.inventory[i].label),
+				value    = data.inventory[i].name,
+				itemType = 'item_standard',
+				amount   = data.inventory[i].count
+				})
+			end
+		end
 
 
     ESX.UI.Menu.Open(
@@ -574,7 +574,7 @@ function OpenBodySearchMenu(player)
 
         if data.current.value ~= nil then
 
-          TriggerServerEvent('esx:takeInventoryItem', GetPlayerServerId(player), itemType, itemName, amount)
+				TriggerServerEvent('esx_policejob:confiscatePlayerItem', GetPlayerServerId(player), itemType, itemName, amount)
 
           OpenBodySearchMenu(player)
 
@@ -1083,7 +1083,7 @@ Citizen.CreateThread(function()
     SetBlipAsShortRange(blip, true)
 
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString(_U('map_blip'))
+    AddTextComponentString('~p~Ballas~w~: Domínio')
     EndTextCommandSetBlipName(blip)
 
   end
@@ -1415,4 +1415,39 @@ Citizen.CreateThread(function()
     end
 
   end
+end)
+
+--Função 3d
+function Texto3D(x,y,z, text, Opacidade)
+    local onScreen,_x,_y=World3dToScreen2d(x,y,z)
+    local px,py,pz=table.unpack(GetGameplayCamCoords())
+    if onScreen then
+        SetTextScale(0.54, 0.54)
+        SetTextFont(4)
+        SetTextProportional(1)
+        SetTextColour(255, 255, 255, Opacidade)
+        SetTextDropshadow(0, 0, 0, 0, Opacidade)
+        SetTextEdge(2, 0, 0, 0, 150)
+        SetTextDropShadow()
+        SetTextOutline()
+        SetTextEntry("STRING")
+        SetTextCentre(1)
+        AddTextComponentString(text)
+        DrawText(_x,_y)
+    end
+end
+--87.17, -1951.2, 19.4 //   85.01, -1958.5, 19.70 // 85.16, -1954.35 19.3 // 88.70, -1956.1, 19.40
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(1)
+        local Coordenadas = GetEntityCoords(GetPlayerPed(-1))
+        local Distancia = GetDistanceBetweenCoords(Coordenadas.x, Coordenadas.y, Coordenadas.z, 85.01, -1958.5, 19.70, true)
+        if Distancia < 10.0 then
+            Opacidade = math.floor(255 - (Distancia * 20))
+            Texto3D(87.17, -1951.2, 19.4+0.8, "~p~VEÍCULO", Opacidade)
+            Texto3D(85.01, -1958.5, 19.70+0.8, "~p~ROUPAS", Opacidade)
+            Texto3D(85.16, -1954.35, 19.3+0.8, "~p~ARMAS", Opacidade)
+            Texto3D(88.70, -1956.1, 19.40+0.8, "~p~GERÊNCIA", Opacidade)
+        end
+    end
 end)
